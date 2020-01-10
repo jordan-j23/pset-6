@@ -37,7 +37,7 @@ input {
 button {
         font: bold 2.2em "Arial", "Arial", "Georgia", sans-serif;
         color: black;
-        border: 5px solid blue;
+        border: 7px solid blue;
         border-radius: 50%;
         height: 3em;
         margin: auto;
