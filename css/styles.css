@@ -48,7 +48,7 @@ button {
 button:hover {
         font: bold 2.2em "Arial", "Arial", "Georgia", sans-serif;
         background-color: red;
-        color: black;
+        color: light-blue;
         border-radius: 50%;
         height: 4em;
         margin: auto;
