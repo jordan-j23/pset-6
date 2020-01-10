@@ -36,7 +36,7 @@ input {
 
 button {
         font: bold 2.2em "Arial", "Arial", "Georgia", sans-serif;
-        color: black;
+        color: white;
         border: 7px solid blue;
         border-radius: 50%;
         height: 3em;
