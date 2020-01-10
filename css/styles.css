@@ -64,7 +64,7 @@ ul {
 li {
         list-style-type: none;
         display: inline-block;
-        color: purple;
+        color: grey;
         font: bold 2.2em "Arial", "Arial", "Georgia", sans-serif;
 
 }
