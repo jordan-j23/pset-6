@@ -1,50 +1,155 @@
-const todoItems = [];
+<!DOCTYPE html>
 
-var element = document.getElementById("myUL");
-for(var i=0;i<element.length;i++){
-    element[i].style.setProperty("text-decoration", "line-through");
-}
+<html>
+<head>
+    <title>Problem Set 5</title>
 
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+    <!-- scripts -->
+    <script type="text/javascript" src="js/staff.js"></script>
+    <script type="text/javascript" src="js/shapes.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>PROBLEM SET 5</h1>
+        <hr />
+    </div>
 
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var val = document.createTextNode(inputValue);
-  li.appendChild(val);
-  if (inputValue === '') {
-    alert("I am empty, put words here.");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
+    <!-- hello -->
+    <div class="exercise" id="exercise-1">
+        <div>
+            <button id="hello">Hello</button>
+            <button id="hello-sample">Sample</button>
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+        </div>
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-1">
+            <canvas width="1024px" height="128px" id="student-canvas-1">
+
+            </canvas>
+        </p>
+        <br />
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-1">
+            <canvas width="1024px" height="128px" id="sample-canvas-1">
+
+            </canvas>
+        </p>
+    </div>
+
+    <!-- rectangle -->
+    <div class="exercise" id="exercise-2">
+        <div>
+            <button id = "rectangle">Rectangle</button>
+            <button id="rectangle-sample">Sample</button>
+        </div>
+
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-2">
+            <canvas width="1024px" height="512px" id="student-canvas-2">
+
+            </canvas>
+        </p>
+        <br />
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-2">
+            <canvas width="1024px" height="512px" id="sample-canvas-2">
+
+            </canvas>
+        </p>
+    </div>
+
+    <!-- color -->
+    <div class="exercise" id="exercise-3">
+        <div>
+            <button id = "colored-rectangle">Color</button>
+            <button id="colored-rectangle-sample">Sample</button>
+        </div>
+
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-3">
+            <canvas width="1024px" height="128px" id="student-canvas-3">
+
+            </canvas>
+        </p>
+        <br />
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-3">
+            <canvas width="1024px" height="128px" id="sample-canvas-3">
+
+            </canvas>
+        </p>
+    </div>
+
+    <!-- triangle -->
+    <div class="exercise" id="exercise-4">
+        <div>
+            <button id = "triangle">Triangle</button>
+            <button id="triangle-sample">Sample</button>
+        </div>
+
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-4">
+            <canvas width="1024px" height="512px" id="student-canvas-4">
+
+            </canvas>
+        </p>
+        <br />
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-4">
+            <canvas width="1024px" height="512px" id="sample-canvas-4">
+
+            </canvas>
+        </p>
+    </div>
+
+    <!-- smile -->
+    <div class="exercise" id="exercise-5">
+        <div>
+            <button id = "smile">Smile</button>
+            <button id="smile-sample">Sample</button>
+        </div>
+
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-5">
+            <canvas width="1024px" height="512px" id="student-canvas-5">
+
+            </canvas>
+        </p>
+        <br />
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-5">
+            <canvas width="1024px" height="512px" id="sample-canvas-5">
+
+            </canvas>
+        </p>
+    </div>
+
+    <!-- pyramid -->
+    <div class="exercise" id="exercise-6">
+        <div>
+            <button id = "pyramid">Pyramid</button>
+            <button id="pyramid-sample">Sample</button>
+        </div>
+
+        <h3>STUDENT OUTPUT</h3>
+        <p class="output" id="output-6">
+            <canvas width="1024px" height="512px" id="student-canvas-6">
+
+            </canvas>
+        </p>
+
+        <br />
+
+        <h3>SAMPLE SOLUTION</h3>
+        <p class="sample" id="sample-6">
+            <canvas width="1024px" height="512px" id="sample-canvas-6">
+
+            </canvas>
+        </p>
+    </div>
+</body>
+</html>
