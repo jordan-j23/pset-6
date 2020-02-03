@@ -1,155 +1,162 @@
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>Problem Set 5</title>
+      let elements = []
+var addButton = document.getElementById("add_button");
+var tableRow = document.getElementsByClassName("row");
+let priorityButton = document.getElementsByClassName("priority_button");
+let completeButton = document.getElementsByClassName("complete_button");
+let removeButton = document.getElementsByClassName("remove_button");
+let listItem = document.getElementsByClassName("to_do")
 
-    <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+let element_prioritize;
 
-    <!-- scripts -->
-    <script type="text/javascript" src="js/staff.js"></script>
-    <script type="text/javascript" src="js/shapes.js"></script>
-</head>
-<body>
-    <div class="header">
-        <h1>PROBLEM SET 5</h1>
-        <hr />
-    </div>
+window.onload = function() {
+  document.getElementById("table").onmouseover = startup;
+}
 
-    <!-- hello -->
-    <div class="exercise" id="exercise-1">
-        <div>
-            <button id="hello">Hello</button>
-            <button id="hello-sample">Sample</button>
+const create_item = function() {
+  let input = document.getElementById("input_item").value;
+  if (input === "") {
 
-        </div>
+  }
+  else {
+      let to_do = {
+          task: input,
+          priority: false,
+          complete: false,
+          html_row: null,
+          html_priority_button: null,
+          html_text: null,
+          html_remove_button: null
+      }
 
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-1">
-            <canvas width="1024px" height="128px" id="student-canvas-1">
+      elements.push(to_do);
+      let index = elements.indexOf(to_do);
 
-            </canvas>
-        </p>
-        <br />
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-1">
-            <canvas width="1024px" height="128px" id="sample-canvas-1">
+      elements[index].htmlRow = document.createElement("tr");
+      elements[index].htmlRow.setAttribute("class", "row");
+      document.getElementById("table").append(elements[index].htmlRow);
 
-            </canvas>
-        </p>
-    </div>
+      elements[index].htmlPriorityButton = document.createElement("td");
+      elements[index].htmlPriorityButton.setAttribute("class", "priority_button");
+      elements[index].htmlPriorityButton.innerHTML = "!";
 
-    <!-- rectangle -->
-    <div class="exercise" id="exercise-2">
-        <div>
-            <button id = "rectangle">Rectangle</button>
-            <button id="rectangle-sample">Sample</button>
-        </div>
+      tableRow[index].append(elements[index].htmlPriorityButton);
 
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-2">
-            <canvas width="1024px" height="512px" id="student-canvas-2">
+      elements[index].htmlText = document.createElement("td");
+      elements[index].htmlText.innerHTML = elements[index].task;
+      elements[index].htmlText.setAttribute("class", "to_do");
 
-            </canvas>
-        </p>
-        <br />
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-2">
-            <canvas width="1024px" height="512px" id="sample-canvas-2">
+      tableRow[index].append(elements[index].htmlText);
 
-            </canvas>
-        </p>
-    </div>
+      elements[index].htmlCompleteButton = document.createElement("td");
+      elements[index].htmlCompleteButton.innerHTML = "&#x2713;";
+      elements[index].htmlCompleteButton.setAttribute("class", "complete_button");
 
-    <!-- color -->
-    <div class="exercise" id="exercise-3">
-        <div>
-            <button id = "colored-rectangle">Color</button>
-            <button id="colored-rectangle-sample">Sample</button>
-        </div>
+      tableRow[index].append(elements[index].htmlCompleteButton);
 
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-3">
-            <canvas width="1024px" height="128px" id="student-canvas-3">
+      elements[index].htmlRemoveButton = document.createElement("td");
+      elements[index].htmlRemoveButton.setAttribute("class", "remove_button");
+      elements[index].htmlRemoveButton.innerHTML = "X";
 
-            </canvas>
-        </p>
-        <br />
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-3">
-            <canvas width="1024px" height="128px" id="sample-canvas-3">
+      tableRow[index].append(elements[index].htmlRemoveButton);
+    }
+    document.getElementById("input_item").value = "";
+};
 
-            </canvas>
-        </p>
-    </div>
+const remove_item = function() {
+  var removed = false;
+  for (let i = 0; i < removeButton.length; i++) {
+    removeButton[i].onclick = function() {
+        removed = true;
+        let remove_element = tableRow[i];
+        remove_element.remove();
+        elements.splice(i, 1);
+    };
+    if (removed) {
+        break;
+    }
+  }
+}
 
-    <!-- triangle -->
-    <div class="exercise" id="exercise-4">
-        <div>
-            <button id = "triangle">Triangle</button>
-            <button id="triangle-sample">Sample</button>
-        </div>
+const finish_item = function() {
+  var finish = false;
+  for (let x = 0; x < completeButton.length; x++) {
+    completeButton[x].onclick = function() {
+       if (elements[x].complete == false) {
+         finish = true;
+         listItem[x].style.setProperty("text-decoration", "line-through");
+         listItem[x].style.backgroundColor = "#baff66";
+         completeButton[x].style.backgroundColor = "#baff66";
+         listItem[x].style.color = "black";
+         completeButton[x].style.color = "black";
+         completeButton[x].style.borderColor = "black";
+         elements[x].complete = true;
+       }
+       else if (elements[x].complete == true) {
+         completeButton[x].style.backgroundColor = "black";
+         completeButton[x].style.color = "#A4FFA4"
+         completeButton[x].style.borderColor = "#A4FFA4"
+         listItem[x].style.setProperty("text-decoration", "none");
+         listItem[x].style.backgroundColor = "black";
+         listItem[x].style.color = "#A4FFA4";
+         elements[x].complete = false;
+       }
+     };
+     if (finish) {
+       break;
+     }
+  }
+}
 
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-4">
-            <canvas width="1024px" height="512px" id="student-canvas-4">
+const prioritize_item = function() {
+  var prioritize = false;
+  for (let z = 0; z < priorityButton.length; z++) {
+    priorityButton[z].onclick = function() {
+      if (elements[z].priority == false) {
+        element_prioritize = tableRow[z]
+        prioritize = true;
+        priorityButton[z].style.backgroundColor = "#fff98a";
+        priorityButton[z].style.color = "black";
+        priorityButton[z].style.borderColor = "black";
+        tableRow[0].before(element_prioritize);
+        elements[z].priority = true;
 
-            </canvas>
-        </p>
-        <br />
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-4">
-            <canvas width="1024px" height="512px" id="sample-canvas-4">
+        const objectToMove = elements[z];
 
-            </canvas>
-        </p>
-    </div>
+        elements.splice(z, 1);
+        elements.unshift(objectToMove);
+        prioritize = true;
+      }
+      else if (elements[z].priority) {
+        element_prioritize = tableRow[z]
+        priorityButton[z].style.backgroundColor = "black";
+        priorityButton[z].style.color = "#A4FFA4";
+        priorityButton[z].style.borderColor = "#A4FFA4";
+        tableRow[elements.length - 1].after(element_prioritize);
+        elements[z].priority = false;
 
-    <!-- smile -->
-    <div class="exercise" id="exercise-5">
-        <div>
-            <button id = "smile">Smile</button>
-            <button id="smile-sample">Sample</button>
-        </div>
+        let element_move = elements[z];
+        elements.splice(z, 1);
+        elements.push(element_move);
+        prioritize = true;
+      }
+    };
+    if (prioritize) {
+      break;
+    }
+  }
+}
 
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-5">
-            <canvas width="1024px" height="512px" id="student-canvas-5">
+const startup = function() {
+  remove_item();
+  finish_item();
+  prioritize_item();
+}
 
-            </canvas>
-        </p>
-        <br />
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-5">
-            <canvas width="1024px" height="512px" id="sample-canvas-5">
+addButton.onclick = create_item
 
-            </canvas>
-        </p>
-    </div>
-
-    <!-- pyramid -->
-    <div class="exercise" id="exercise-6">
-        <div>
-            <button id = "pyramid">Pyramid</button>
-            <button id="pyramid-sample">Sample</button>
-        </div>
-
-        <h3>STUDENT OUTPUT</h3>
-        <p class="output" id="output-6">
-            <canvas width="1024px" height="512px" id="student-canvas-6">
-
-            </canvas>
-        </p>
-
-        <br />
-
-        <h3>SAMPLE SOLUTION</h3>
-        <p class="sample" id="sample-6">
-            <canvas width="1024px" height="512px" id="sample-canvas-6">
-
-            </canvas>
-        </p>
-    </div>
-</body>
-</html>
+document.getElementById("input_item").addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    document.getElementById("add_button").click();
+  }
+});
